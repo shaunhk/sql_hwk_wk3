@@ -42,6 +42,6 @@ album1.save()
 # p Artist.list()
 # p Album.list()
 p artist1.albums
-
+p album1.artist
 binding.pry
 nil
