@@ -50,7 +50,8 @@ album2.genre = "Blues"
 album2.update_album()
 artist2.name = "Marilyn Manson and the Spooky Kids"
 artist2.update_artist()
-
+# p Artist.find(27)
+p Album.find(49)
 # p Artist.list()
 # p Album.list()
 # p artist1.albums
