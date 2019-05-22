@@ -1,5 +1,6 @@
 require('pg')
 require_relative('../db/sql_runner.rb')
+require_relative('album.rb')
 
 class Artist
 
@@ -11,17 +12,25 @@ class Artist
     @id = options['id'] if options['id']
   end
 
-  def self.delete_all()
-    sql = 'DELETE FROM artists;'
-    SqlRunner.run(sql)
-  end
-
   def save()
     sql = 'INSERT INTO artists (name) VALUES ($1) RETURNING id;'
     values = [@name]
     results = SqlRunner.run(sql, values)
     id_string = results[0]['id']
     @id = id_string.to_i
+  end
+
+  def albums()
+    sql = "SELECT * FROM albums WHERE artist_id = $1;"
+    values = [@id]
+    album_hashes = SqlRunner.run(sql, values)
+    album_objects = album_hashes.map{|album| Album.new(album)}
+    return album_objects
+  end
+
+  def self.delete_all()
+    sql = 'DELETE FROM artists;'
+    SqlRunner.run(sql)
   end
 
   def self.list()
