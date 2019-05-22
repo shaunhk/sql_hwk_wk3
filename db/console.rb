@@ -38,10 +38,22 @@ album3 = Album.new(
 album3.save()
 album2.save()
 album1.save()
+album2 = Album.new(
+  {
+  'artist_id' => artist1.id,
+  'title' => 'Bless The Weather',
+  'genre' => 'Blues'
+  }
+)
+
+album2.genre = "Blues"
+album2.update_album()
+artist2.name = "Marilyn Manson and the Spooky Kids"
+artist2.update_artist()
 
 # p Artist.list()
 # p Album.list()
-p artist1.albums
-p album1.artist
+# p artist1.albums
+# p album1.artist
 binding.pry
 nil

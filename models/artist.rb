@@ -4,8 +4,8 @@ require_relative('album.rb')
 
 class Artist
 
-  attr_reader :name
-  attr_accessor :id
+  attr_reader :id
+  attr_accessor :name
 
   def initialize(options)
     @name = options['name']
@@ -26,6 +26,12 @@ class Artist
     album_hashes = SqlRunner.run(sql, values)
     album_objects = album_hashes.map{|album| Album.new(album)}
     return album_objects
+  end
+
+  def update_artist()
+    sql = "UPDATE artists SET name = $1 WHERE id = $2"
+    values = [@name, @id]
+    SqlRunner.run(sql, values)
   end
 
   def self.delete_all()
