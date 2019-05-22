@@ -27,7 +27,7 @@ class Artist
   def self.list()
     sql = 'SELECT * FROM artists;'
     artist_hashes = SqlRunner.run(sql)
-    artist_objects = artist_hashes.map {|artist| Artist.new(artist)}
+    artist_objects = artist_hashes.map{|artist| Artist.new(artist)}
     return artist_objects
   end
 

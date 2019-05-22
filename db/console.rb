@@ -14,7 +14,33 @@ album1 = Album.new(
     'genre' => 'Acoustic'
   }
 )
+album2 = Album.new(
+  {
+    'artist_id' => artist1.id,
+    'title' => 'Bless The Weather',
+    'genre' => 'Easy Listening'
+  }
+)
+
+artist2 = Artist.new(
+  {
+    'name' => 'Marilyn Manson'
+  }
+)
+artist2.save()
+album3 = Album.new(
+  {
+  'artist_id' => artist2.id,
+  'title' => 'Antichrist Superstar',
+  'genre' => 'Metal'
+  }
+)
+album3.save()
+album2.save()
 album1.save()
+
+# p Artist.list()
+# p Album.list()
 
 
 binding.pry
